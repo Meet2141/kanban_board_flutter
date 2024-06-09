@@ -1,0 +1,100 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services"
+    id "com.google.firebase.crashlytics"
+    id "com.google.firebase:firebase-messaging:20.1.6"
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader("UTF-8") { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterVersionCode = localProperties.getProperty("flutter.versionCode")
+if (flutterVersionCode == null) {
+    flutterVersionCode = "1"
+}
+
+def flutterVersionName = localProperties.getProperty("flutter.versionName")
+if (flutterVersionName == null) {
+    flutterVersionName = "1.0"
+}
+
+android {
+    namespace 'com.seedflutter.seed_flutter'
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "com.seedflutter.seed_flutter"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutterVersionCode.toInteger()
+        versionName = flutterVersionName
+    }
+
+    buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig = signingConfigs.debug
+        }
+    }
+    flavorDimensions "flavor-type"
+
+    productFlavors {
+        development {
+            dimension "flavor-type"
+            resValue "string", "app_name", "Seed Dev"
+            applicationIdSuffix ".dev"
+            manifestPlaceholders = [
+                    "appAuthRedirectScheme": "com.oktapreview.peakxv"
+            ]
+        }
+        qa {
+            dimension "flavor-type"
+            resValue "string", "app_name", "Seed QA"
+            applicationIdSuffix ".qa"
+            manifestPlaceholders = [
+                    "appAuthRedirectScheme": "com.oktapreview.peakxv"
+            ]
+        }
+        stage {
+            dimension "flavor-type"
+            resValue "string", "app_name", "Seed Stage"
+            applicationIdSuffix ".stage"
+            manifestPlaceholders = [
+                    "appAuthRedirectScheme": "com.oktapreview.peakxv"
+            ]
+        }
+        production {
+            dimension "flavor-type"
+            resValue "string", "app_name", "Seed"
+            manifestPlaceholders = [
+                    "appAuthRedirectScheme": "com.sequoiacap.investorpulse"
+            ]
+        }
+    }
+
+    lint {
+        checkReleaseBuilds false
+    }
+}
+
+flutter {
+    source '../..'
+    target 'lib/dev/dev_main.dart'
+}

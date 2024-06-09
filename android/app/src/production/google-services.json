@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "325340040083",
+    "project_id": "pulse-flutter---prod",
+    "storage_bucket": "pulse-flutter---prod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325340040083:android:c2cd0317f31c2c10827666",
+        "android_client_info": {
+          "package_name": "com.peakxv.pulse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "325340040083-kv8s1fvrc7et5fkghsg5urkvsjqngv2r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuyYXfu_UCgs999yFyJEJWc4uKh3GXYRk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "325340040083-kv8s1fvrc7et5fkghsg5urkvsjqngv2r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "325340040083-vlrji7hkt2dta6tj945tt5a94bq59ugb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sequoiacap.native.InvestorPulse"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

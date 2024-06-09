@@ -1,0 +1,45 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  errors:
+    missing_return: error
+    prefer_const_declarations: error
+    prefer_single_quotes: warning
+    always_use_package_imports: warning
+    avoid_dynamic_calls: warning
+    avoid_empty_else: error
+    avoid_print: error
+    avoid_relative_lib_imports: error
+    avoid_returning_null_for_future: error
+    cancel_subscriptions: warning
+    empty_statements: error
+    hash_and_equals: error
+    invariant_booleans: error
+    iterable_contains_unrelated_type: error
+    always_declare_return_types: error
+    avoid_return_types_on_setters: warning
+    avoid_void_async: warning
+    camel_case_extensions: warning
+    camel_case_types: warning
+    prefer_const_constructors: warning
+
+linter:
+  rules:
+    prefer_const_declarations: true
+    depend_on_referenced_packages: false
+    prefer_single_quotes: true
+    always_use_package_imports: true
+    avoid_dynamic_calls: true
+    avoid_empty_else: true
+    avoid_print: true
+    avoid_relative_lib_imports: true
+    cancel_subscriptions: true
+    empty_statements: true
+    hash_and_equals: true
+    collection_methods_unrelated_type: true
+    always_declare_return_types: true
+    avoid_return_types_on_setters: true
+    avoid_void_async: true
+    camel_case_extensions: true
+    camel_case_types: true
+    prefer_const_constructors: true
