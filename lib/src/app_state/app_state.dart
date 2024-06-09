@@ -1,5 +1,5 @@
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:seed_flutter/src/core/utils/encrypted_shared_preference_utils.dart';
+import 'package:kanban_flutter/src/core/utils/encrypted_shared_preference_utils.dart';
 
 class AppState {
   static final AppState _singleton = AppState._internal();

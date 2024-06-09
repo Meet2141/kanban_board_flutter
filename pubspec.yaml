@@ -1,5 +1,5 @@
-name: seed_flutter
-description: "Seed Flutter Project"
+name: kanban_flutter
+description: "Kanban Board Flutter Example"
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 

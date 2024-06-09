@@ -58,34 +58,22 @@ android {
     productFlavors {
         development {
             dimension "flavor-type"
-            resValue "string", "app_name", "Seed Dev"
+            resValue "string", "app_name", "Kanban Dev"
             applicationIdSuffix ".dev"
-            manifestPlaceholders = [
-                    "appAuthRedirectScheme": "com.oktapreview.peakxv"
-            ]
         }
         qa {
             dimension "flavor-type"
-            resValue "string", "app_name", "Seed QA"
+            resValue "string", "app_name", "Kanban QA"
             applicationIdSuffix ".qa"
-            manifestPlaceholders = [
-                    "appAuthRedirectScheme": "com.oktapreview.peakxv"
-            ]
         }
         stage {
             dimension "flavor-type"
-            resValue "string", "app_name", "Seed Stage"
+            resValue "string", "app_name", "Kanban Stage"
             applicationIdSuffix ".stage"
-            manifestPlaceholders = [
-                    "appAuthRedirectScheme": "com.oktapreview.peakxv"
-            ]
         }
         production {
             dimension "flavor-type"
-            resValue "string", "app_name", "Seed"
-            manifestPlaceholders = [
-                    "appAuthRedirectScheme": "com.sequoiacap.investorpulse"
-            ]
+            resValue "string", "app_name", "Kanban"
         }
     }
 

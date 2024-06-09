@@ -1,10 +1,10 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
-import 'package:seed_flutter/src/core/constants/color_constants.dart';
-import 'package:seed_flutter/src/core/constants/image_constants.dart';
-import 'package:seed_flutter/src/core/extensions/gesture_extensions.dart';
-import 'package:seed_flutter/src/core/extensions/image_extensions.dart';
-import 'package:seed_flutter/src/core/widgets/text_widgets/text_widgets.dart';
+import 'package:kanban_flutter/src/core/constants/color_constants.dart';
+import 'package:kanban_flutter/src/core/constants/image_constants.dart';
+import 'package:kanban_flutter/src/core/extensions/gesture_extensions.dart';
+import 'package:kanban_flutter/src/core/extensions/image_extensions.dart';
+import 'package:kanban_flutter/src/core/widgets/text_widgets/text_widgets.dart';
 
 /// ToastUtils class is used for toast in app.
 class ToastUtils {

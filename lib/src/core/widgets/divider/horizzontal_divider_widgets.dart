@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:seed_flutter/src/core/constants/color_constants.dart';
+import 'package:kanban_flutter/src/core/constants/color_constants.dart';
 
 class HorizontalDividerWidgets extends StatelessWidget {
   final double? height;

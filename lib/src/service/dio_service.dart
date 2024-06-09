@@ -2,12 +2,12 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:seed_flutter/src/core/constants/shared_pref_constants.dart';
-import 'package:seed_flutter/src/core/constants/string_constants.dart';
-import 'package:seed_flutter/src/core/model/base/res_base_model.dart';
-import 'package:seed_flutter/src/core/utils/error_handling_utils.dart';
-import 'package:seed_flutter/src/core/utils/internet_connectivity_utils.dart';
-import 'package:seed_flutter/src/core/utils/toast_utils.dart';
+import 'package:kanban_flutter/src/core/constants/shared_pref_constants.dart';
+import 'package:kanban_flutter/src/core/constants/string_constants.dart';
+import 'package:kanban_flutter/src/core/model/base/res_base_model.dart';
+import 'package:kanban_flutter/src/core/utils/error_handling_utils.dart';
+import 'package:kanban_flutter/src/core/utils/internet_connectivity_utils.dart';
+import 'package:kanban_flutter/src/core/utils/toast_utils.dart';
 
 /// DioService class contains basic html request functions
 /// like get, put and post.

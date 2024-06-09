@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:seed_flutter/src/core/utils/haptic_feedback_utils.dart';
+import 'package:kanban_flutter/src/core/utils/haptic_feedback_utils.dart';
 
 /// GestureExtension is used for onTap widget in app
 extension GestureExtension on Widget {

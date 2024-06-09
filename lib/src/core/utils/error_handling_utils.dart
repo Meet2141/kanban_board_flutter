@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_dynamic_calls
 import 'package:dio/dio.dart';
-import 'package:seed_flutter/src/core/constants/string_constants.dart';
-import 'package:seed_flutter/src/core/utils/toast_utils.dart';
+import 'package:kanban_flutter/src/core/constants/string_constants.dart';
+import 'package:kanban_flutter/src/core/utils/toast_utils.dart';
 
 class ErrorHandlingUtils {
   ///This global method handles errors faced during calling or converting api responses.

@@ -1,8 +1,8 @@
-import 'package:seed_flutter/src/app_state/app_state.dart';
+import 'package:kanban_flutter/src/app_state/app_state.dart';
 
 ///StringConstants - Strings Constants are defined here
 class StringConstants {
-  static const appName = 'Seed Flutter';
+  static const appName = 'Kanban Flutter';
   static const developerName = 'Meet Shah';
   static const by = 'by';
   static const home = 'Home';

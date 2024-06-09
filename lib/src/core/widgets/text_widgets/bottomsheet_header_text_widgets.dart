@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:seed_flutter/src/core/constants/color_constants.dart';
-import 'package:seed_flutter/src/core/constants/image_constants.dart';
-import 'package:seed_flutter/src/core/extensions/gesture_extensions.dart';
-import 'package:seed_flutter/src/core/extensions/image_extensions.dart';
-import 'package:seed_flutter/src/core/extensions/scaffold_extension.dart';
-import 'package:seed_flutter/src/core/widgets/divider/horizzontal_divider_widgets.dart';
-import 'package:seed_flutter/src/core/widgets/text_widgets/text_Widgets.dart';
+import 'package:kanban_flutter/src/core/constants/color_constants.dart';
+import 'package:kanban_flutter/src/core/constants/image_constants.dart';
+import 'package:kanban_flutter/src/core/extensions/gesture_extensions.dart';
+import 'package:kanban_flutter/src/core/extensions/image_extensions.dart';
+import 'package:kanban_flutter/src/core/extensions/scaffold_extension.dart';
+import 'package:kanban_flutter/src/core/widgets/divider/horizzontal_divider_widgets.dart';
+import 'package:kanban_flutter/src/core/widgets/text_widgets/text_Widgets.dart';
 
 ///BottomSheetHeaderTextWidgets - Displays BottomSheet Header Text Widgets.
 class BottomSheetHeaderTextWidgets extends StatelessWidget {

@@ -1,16 +1,16 @@
 import 'package:appflowy_board/appflowy_board.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:seed_flutter/src/core/utils/bottomsheet_utils.dart';
-import 'package:seed_flutter/src/features/kanban_board/bloc/kanban_bloc.dart';
-import 'package:seed_flutter/src/features/kanban_board/bloc/kanban_event.dart';
-import 'package:seed_flutter/src/features/kanban_board/bloc/kanban_state.dart';
-import 'package:seed_flutter/src/core/constants/string_constants.dart';
-import 'package:seed_flutter/src/core/extensions/scaffold_extension.dart';
-import 'package:seed_flutter/src/core/widgets/text_widgets/text_Widgets.dart';
-import 'package:seed_flutter/src/features/kanban_board/model/kanban_model.dart';
-import 'package:seed_flutter/src/features/kanban_board/widgets/kanban_add_update_view.dart';
-import 'package:seed_flutter/src/features/kanban_board/widgets/kanban_card_item_view.dart';
+import 'package:kanban_flutter/src/core/utils/bottomsheet_utils.dart';
+import 'package:kanban_flutter/src/features/kanban_board/bloc/kanban_bloc.dart';
+import 'package:kanban_flutter/src/features/kanban_board/bloc/kanban_event.dart';
+import 'package:kanban_flutter/src/features/kanban_board/bloc/kanban_state.dart';
+import 'package:kanban_flutter/src/core/constants/string_constants.dart';
+import 'package:kanban_flutter/src/core/extensions/scaffold_extension.dart';
+import 'package:kanban_flutter/src/core/widgets/text_widgets/text_Widgets.dart';
+import 'package:kanban_flutter/src/features/kanban_board/model/kanban_model.dart';
+import 'package:kanban_flutter/src/features/kanban_board/widgets/kanban_add_update_view.dart';
+import 'package:kanban_flutter/src/features/kanban_board/widgets/kanban_card_item_view.dart';
 
 ///KanbanScreenView - Display Kanban Board View
 class KanbanScreenView extends StatefulWidget {

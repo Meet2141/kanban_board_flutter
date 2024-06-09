@@ -1,9 +1,9 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:seed_flutter/src/core/constants/color_constants.dart';
-import 'package:seed_flutter/src/core/constants/string_constants.dart';
-import 'package:seed_flutter/src/routing/routing_config.dart';
+import 'package:kanban_flutter/src/core/constants/color_constants.dart';
+import 'package:kanban_flutter/src/core/constants/string_constants.dart';
+import 'package:kanban_flutter/src/routing/routing_config.dart';
 
 void mainDelegate() {
   runApp(const MyApp());

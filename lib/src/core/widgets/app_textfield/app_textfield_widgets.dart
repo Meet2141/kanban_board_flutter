@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:seed_flutter/src/core/constants/color_constants.dart';
-import 'package:seed_flutter/src/core/widgets/text_widgets/text_Widgets.dart';
+import 'package:kanban_flutter/src/core/constants/color_constants.dart';
+import 'package:kanban_flutter/src/core/widgets/text_widgets/text_Widgets.dart';
 
 /// AppTextField is common textField used in app.
 class AppTextField extends StatelessWidget {

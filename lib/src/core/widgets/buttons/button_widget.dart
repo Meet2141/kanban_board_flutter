@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:seed_flutter/src/core/constants/color_constants.dart';
-import 'package:seed_flutter/src/core/extensions/gesture_extensions.dart';
-import 'package:seed_flutter/src/core/widgets/text_widgets/text_Widgets.dart';
+import 'package:kanban_flutter/src/core/constants/color_constants.dart';
+import 'package:kanban_flutter/src/core/extensions/gesture_extensions.dart';
+import 'package:kanban_flutter/src/core/widgets/text_widgets/text_Widgets.dart';
 
 ///ButtonWidgets - Display Button Widgets
 class ButtonWidgets extends StatelessWidget {

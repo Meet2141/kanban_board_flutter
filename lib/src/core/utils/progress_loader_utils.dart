@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
-import 'package:seed_flutter/src/core/constants/animation_constants.dart';
+import 'package:kanban_flutter/src/core/constants/animation_constants.dart';
 
 ///LoaderUtils - Used to display and dismiss loader
 class LoaderUtils {

@@ -1,9 +1,9 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:seed_flutter/src/core/constants/routing_constants.dart';
-import 'package:seed_flutter/src/features/kanban_board/kanban_screen.dart';
-import 'package:seed_flutter/src/features/splash/splash_screen.dart';
+import 'package:kanban_flutter/src/core/constants/routing_constants.dart';
+import 'package:kanban_flutter/src/features/kanban_board/kanban_screen.dart';
+import 'package:kanban_flutter/src/features/splash/splash_screen.dart';
 
 ///RoutingConfig - Handle Routing of application
 class RoutingConfig {

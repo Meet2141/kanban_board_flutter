@@ -1,4 +1,4 @@
-import 'package:seed_flutter/src/core/constants/string_constants.dart';
+import 'package:kanban_flutter/src/core/constants/string_constants.dart';
 
 extension ValidationExtension on String {
   ///Title

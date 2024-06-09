@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:seed_flutter/src/core/constants/color_constants.dart';
+import 'package:kanban_flutter/src/core/constants/color_constants.dart';
 
 ///BottomSheetUtils class contain bottomSheet method used in app
 class BottomSheetUtils {

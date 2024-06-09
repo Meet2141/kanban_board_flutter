@@ -1,13 +1,13 @@
 import 'package:appflowy_board/appflowy_board.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:seed_flutter/src/core/constants/color_constants.dart';
-import 'package:seed_flutter/src/core/extensions/gesture_extensions.dart';
-import 'package:seed_flutter/src/core/utils/bottomsheet_utils.dart';
-import 'package:seed_flutter/src/features/kanban_board/bloc/kanban_bloc.dart';
-import 'package:seed_flutter/src/features/kanban_board/bloc/kanban_event.dart';
-import 'package:seed_flutter/src/features/kanban_board/model/kanban_model.dart';
-import 'package:seed_flutter/src/features/kanban_board/widgets/kanban_add_update_view.dart';
+import 'package:kanban_flutter/src/core/constants/color_constants.dart';
+import 'package:kanban_flutter/src/core/extensions/gesture_extensions.dart';
+import 'package:kanban_flutter/src/core/utils/bottomsheet_utils.dart';
+import 'package:kanban_flutter/src/features/kanban_board/bloc/kanban_bloc.dart';
+import 'package:kanban_flutter/src/features/kanban_board/bloc/kanban_event.dart';
+import 'package:kanban_flutter/src/features/kanban_board/model/kanban_model.dart';
+import 'package:kanban_flutter/src/features/kanban_board/widgets/kanban_add_update_view.dart';
 
 ///KanbanCardItemView - Display Kanban Card View in Kanban Board
 class KanbanCardItemView extends StatelessWidget {

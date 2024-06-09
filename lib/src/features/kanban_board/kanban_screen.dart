@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:seed_flutter/src/features/kanban_board/bloc/kanban_bloc.dart';
-import 'package:seed_flutter/src/features/kanban_board/bloc/kanban_event.dart';
-import 'package:seed_flutter/src/features/kanban_board/view/kanban_screen_view.dart';
+import 'package:kanban_flutter/src/features/kanban_board/bloc/kanban_bloc.dart';
+import 'package:kanban_flutter/src/features/kanban_board/bloc/kanban_event.dart';
+import 'package:kanban_flutter/src/features/kanban_board/view/kanban_screen_view.dart';
 
 ///KanbanScreen - Display Kanban Screen
 class KanbanScreen extends StatelessWidget {

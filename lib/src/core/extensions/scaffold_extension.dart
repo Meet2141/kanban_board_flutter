@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:seed_flutter/src/core/constants/color_constants.dart';
+import 'package:kanban_flutter/src/core/constants/color_constants.dart';
 
 /// ScaffoldExtension class return scaffold widget with
 /// fixed layout properties.
-/// Created to maintain same layout properties in
-/// whole application with minimum of coinvesde.
 extension ScaffoldExtension on Widget {
   PopScope baseScaffold({
     bool? resizeToAvoidBottomInset,

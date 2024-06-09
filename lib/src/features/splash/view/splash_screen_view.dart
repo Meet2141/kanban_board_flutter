@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:seed_flutter/src/core/constants/routing_constants.dart';
-import 'package:seed_flutter/src/core/constants/string_constants.dart';
-import 'package:seed_flutter/src/core/extensions/gesture_extensions.dart';
-import 'package:seed_flutter/src/core/extensions/scaffold_extension.dart';
-import 'package:seed_flutter/src/core/utils/app_utils.dart';
-import 'package:seed_flutter/src/core/utils/progress_loader_utils.dart';
-import 'package:seed_flutter/src/core/utils/toast_utils.dart';
-import 'package:seed_flutter/src/core/widgets/text_widgets/text_Widgets.dart';
-import 'package:seed_flutter/src/features/splash/bloc/splash_bloc.dart';
-import 'package:seed_flutter/src/features/splash/bloc/splash_event.dart';
-import 'package:seed_flutter/src/features/splash/bloc/splash_state.dart';
+import 'package:kanban_flutter/src/core/constants/routing_constants.dart';
+import 'package:kanban_flutter/src/core/constants/string_constants.dart';
+import 'package:kanban_flutter/src/core/extensions/gesture_extensions.dart';
+import 'package:kanban_flutter/src/core/extensions/scaffold_extension.dart';
+import 'package:kanban_flutter/src/core/utils/app_utils.dart';
+import 'package:kanban_flutter/src/core/utils/progress_loader_utils.dart';
+import 'package:kanban_flutter/src/core/utils/toast_utils.dart';
+import 'package:kanban_flutter/src/core/widgets/text_widgets/text_Widgets.dart';
+import 'package:kanban_flutter/src/features/splash/bloc/splash_bloc.dart';
+import 'package:kanban_flutter/src/features/splash/bloc/splash_event.dart';
+import 'package:kanban_flutter/src/features/splash/bloc/splash_state.dart';
 
 ///SplashScreenView - Display Splash Screen View of the app
 class SplashScreenView extends StatefulWidget {

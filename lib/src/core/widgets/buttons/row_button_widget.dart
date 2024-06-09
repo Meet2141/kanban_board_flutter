@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:seed_flutter/src/core/constants/color_constants.dart';
-import 'package:seed_flutter/src/core/constants/string_constants.dart';
-import 'package:seed_flutter/src/core/widgets/buttons/button_widget.dart';
+import 'package:kanban_flutter/src/core/constants/color_constants.dart';
+import 'package:kanban_flutter/src/core/constants/string_constants.dart';
+import 'package:kanban_flutter/src/core/widgets/buttons/button_widget.dart';
 
 ///RowButtonWidgets - Display Row Button Widgets
 class RowButtonWidgets extends StatelessWidget {

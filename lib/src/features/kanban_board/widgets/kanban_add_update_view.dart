@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:seed_flutter/src/core/constants/string_constants.dart';
-import 'package:seed_flutter/src/core/extensions/scaffold_extension.dart';
-import 'package:seed_flutter/src/core/extensions/validation_extension.dart';
-import 'package:seed_flutter/src/core/widgets/app_textfield/app_textfield_widgets.dart';
-import 'package:seed_flutter/src/core/widgets/buttons/row_button_widget.dart';
-import 'package:seed_flutter/src/core/widgets/text_widgets/bottomsheet_header_text_widgets.dart';
-import 'package:seed_flutter/src/features/kanban_board/model/kanban_model.dart';
+import 'package:kanban_flutter/src/core/constants/string_constants.dart';
+import 'package:kanban_flutter/src/core/extensions/scaffold_extension.dart';
+import 'package:kanban_flutter/src/core/extensions/validation_extension.dart';
+import 'package:kanban_flutter/src/core/widgets/app_textfield/app_textfield_widgets.dart';
+import 'package:kanban_flutter/src/core/widgets/buttons/row_button_widget.dart';
+import 'package:kanban_flutter/src/core/widgets/text_widgets/bottomsheet_header_text_widgets.dart';
+import 'package:kanban_flutter/src/features/kanban_board/model/kanban_model.dart';
 
 ///KanbanAddUpdateView - Display Kanban Add/Update View for Card
 class KanbanAddUpdateView extends StatefulWidget {
