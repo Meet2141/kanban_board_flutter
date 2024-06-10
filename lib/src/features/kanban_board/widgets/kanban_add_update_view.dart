@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kanban_flutter/src/core/constants/string_constants.dart';
 import 'package:kanban_flutter/src/core/extensions/scaffold_extension.dart';
 import 'package:kanban_flutter/src/core/extensions/validation_extension.dart';
 import 'package:kanban_flutter/src/core/widgets/app_textfield/app_textfield_widgets.dart';
 import 'package:kanban_flutter/src/core/widgets/buttons/row_button_widget.dart';
 import 'package:kanban_flutter/src/core/widgets/text_widgets/bottomsheet_header_text_widgets.dart';
 import 'package:kanban_flutter/src/features/kanban_board/model/kanban_model.dart';
+import 'package:kanban_flutter/src/localization/language_constants.dart';
 
 ///KanbanAddUpdateView - Display Kanban Add/Update View for Card
 class KanbanAddUpdateView extends StatefulWidget {
@@ -55,7 +55,7 @@ class _KanbanAddUpdateViewState extends State<KanbanAddUpdateView> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             BottomSheetHeaderTextWidgets(
-              header: widget.isAdd ? StringConstants.addTask : StringConstants.updateTask,
+              header: widget.isAdd ? translation(context).addTask : translation(context).updateTask,
               onBack: () {},
             ),
             Expanded(
@@ -63,25 +63,25 @@ class _KanbanAddUpdateViewState extends State<KanbanAddUpdateView> {
                 children: [
                   AppTextField(
                     controller: titleController,
-                    hintText: StringConstants.title,
+                    hintText: translation(context).title,
                     mandatory: true,
                     mandatoryText: '*',
                     onChange: (value) {
                       enable();
                     },
                     validate: (value) {
-                      return value.toString().validTitle(ignoreEmpty: true);
+                      return value.toString().validTitle(context: context, ignoreEmpty: true);
                     },
                   ),
                   const SizedBox(height: 12),
                   AppTextField(
                     controller: descriptionController,
-                    hintText: StringConstants.description,
+                    hintText: translation(context).description,
                     onChange: (value) {
                       enable();
                     },
                     validate: (value) {
-                      return value.toString().validDescription(ignoreEmpty: true);
+                      return value.toString().validDescription(context: context, ignoreEmpty: true);
                     },
                   ),
                 ],
@@ -89,6 +89,9 @@ class _KanbanAddUpdateViewState extends State<KanbanAddUpdateView> {
             ),
             RowButtonWidgets(
               isValidNext: enable(),
+              cancelBtnName: translation(context).cancel,
+              nxtBtnName: widget.isAdd ? translation(context).add : translation(context).update,
+              // nxtBtnName: translation(context).,
               nextTap: () {
                 if (enable()) {
                   widget.onTapCallBack.call(

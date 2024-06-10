@@ -1,16 +1,19 @@
 import 'package:appflowy_board/appflowy_board.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kanban_flutter/main.dart';
+import 'package:kanban_flutter/src/core/constants/color_constants.dart';
 import 'package:kanban_flutter/src/core/utils/bottomsheet_utils.dart';
 import 'package:kanban_flutter/src/features/kanban_board/bloc/kanban_bloc.dart';
 import 'package:kanban_flutter/src/features/kanban_board/bloc/kanban_event.dart';
 import 'package:kanban_flutter/src/features/kanban_board/bloc/kanban_state.dart';
-import 'package:kanban_flutter/src/core/constants/string_constants.dart';
 import 'package:kanban_flutter/src/core/extensions/scaffold_extension.dart';
 import 'package:kanban_flutter/src/core/widgets/text_widgets/text_Widgets.dart';
 import 'package:kanban_flutter/src/features/kanban_board/model/kanban_model.dart';
 import 'package:kanban_flutter/src/features/kanban_board/widgets/kanban_add_update_view.dart';
 import 'package:kanban_flutter/src/features/kanban_board/widgets/kanban_card_item_view.dart';
+import 'package:kanban_flutter/src/localization/language_constants.dart';
+import 'package:kanban_flutter/src/localization/language_model.dart';
 
 ///KanbanScreenView - Display Kanban Board View
 class KanbanScreenView extends StatefulWidget {
@@ -90,9 +93,9 @@ class _KanbanScreenViewState extends State<KanbanScreenView> {
                 footerBuilder: (context, group) {
                   return AppFlowyGroupFooter(
                     icon: const Icon(Icons.add, size: 20),
-                    title: const TextWidgets(
-                      text: StringConstants.addTask,
-                      style: TextStyle(),
+                    title: TextWidgets(
+                      text: translation(context).addTask,
+                      style: const TextStyle(),
                     ),
                     height: 50,
                     margin: state.config.groupBodyPadding,
@@ -131,10 +134,46 @@ class _KanbanScreenViewState extends State<KanbanScreenView> {
       },
     ).baseScaffold(
         appBar: AppBar(
-      title: const TextWidgets(
-        text: StringConstants.appName,
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+      title: TextWidgets(
+        text: translation(context).appName,
+        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
       ),
+      actions: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: DropdownButton<Language>(
+            underline: const SizedBox(),
+            icon: const Icon(
+              Icons.language,
+              color: ColorConstants.black,
+            ),
+            onChanged: (Language? language) async {
+              if (language != null) {
+                await setLocale(language.languageCode).then((value) {
+                  MyApp.setLocale(context, value);
+                });
+              }
+            },
+            items: Language.languageList()
+                .map<DropdownMenuItem<Language>>(
+                  (e) => DropdownMenuItem<Language>(
+                    value: e,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Text(
+                          e.flag,
+                          style: const TextStyle(fontSize: 30),
+                        ),
+                        Text(e.name)
+                      ],
+                    ),
+                  ),
+                )
+                .toList(),
+          ),
+        ),
+      ],
     ));
   }
 }

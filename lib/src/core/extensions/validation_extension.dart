@@ -1,29 +1,30 @@
-import 'package:kanban_flutter/src/core/constants/string_constants.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:kanban_flutter/src/localization/language_constants.dart';
 
 extension ValidationExtension on String {
   ///Title
-  String? validTitle({bool ignoreEmpty = false}) {
+  String? validTitle({required BuildContext context, bool ignoreEmpty = false}) {
     if (isEmpty && ignoreEmpty) {
       return null;
     } else if (isEmpty) {
-      return StringConstants.pleaseEnterTitle;
+      return translation(context).pleaseEnterTitle;
     } else if (trim().length < 2) {
-      return StringConstants.titleMustHaveTwoCharacters;
+      return translation(context).titleMustHaveTwoCharacters;
     } else {
       return null;
     }
   }
 
   ///Description
-  String? validDescription({bool ignoreEmpty = false}) {
+  String? validDescription({required BuildContext context, bool ignoreEmpty = false}) {
     if (isEmpty && ignoreEmpty) {
       return null;
     } else if (isEmpty) {
-      return StringConstants.pleaseEnterDescription;
+      return translation(context).pleaseEnterDescription;
     } else if (trim().length < 2) {
-      return StringConstants.descriptionMustHaveTwoCharacters;
+      return translation(context).descriptionMustHaveTwoCharacters;
     } else if (trim().length > 100) {
-      return StringConstants.descriptionMustHaveTwoCharacters;
+      return translation(context).descriptionMustHaveTwoCharacters;
     } else {
       return null;
     }

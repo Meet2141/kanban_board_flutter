@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kanban_flutter/src/core/constants/color_constants.dart';
-import 'package:kanban_flutter/src/core/constants/string_constants.dart';
 import 'package:kanban_flutter/src/core/widgets/buttons/button_widget.dart';
 
 ///RowButtonWidgets - Display Row Button Widgets
@@ -14,9 +13,9 @@ class RowButtonWidgets extends StatelessWidget {
   const RowButtonWidgets({
     super.key,
     required this.isValidNext,
-    this.nxtBtnName = StringConstants.add,
+    required this.nxtBtnName,
     required this.nextTap,
-    this.cancelBtnName = StringConstants.cancel,
+    required this.cancelBtnName,
     required this.cancelTap,
   });
 
