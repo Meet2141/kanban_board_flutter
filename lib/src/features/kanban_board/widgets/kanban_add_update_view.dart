@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kanban_flutter/src/core/constants/string_constants.dart';
+import 'package:kanban_flutter/src/core/extensions/gesture_extensions.dart';
 import 'package:kanban_flutter/src/core/extensions/scaffold_extension.dart';
 import 'package:kanban_flutter/src/core/extensions/validation_extension.dart';
 import 'package:kanban_flutter/src/core/widgets/app_textfield/app_textfield_widgets.dart';
 import 'package:kanban_flutter/src/core/widgets/buttons/row_button_widget.dart';
 import 'package:kanban_flutter/src/core/widgets/text_widgets/bottomsheet_header_text_widgets.dart';
+import 'package:kanban_flutter/src/core/widgets/text_widgets/text_Widgets.dart';
 import 'package:kanban_flutter/src/features/kanban_board/model/kanban_model.dart';
 import 'package:kanban_flutter/src/localization/language_constants.dart';
 
@@ -29,6 +32,11 @@ class _KanbanAddUpdateViewState extends State<KanbanAddUpdateView> {
   final formKey = GlobalKey<FormState>();
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController startDateController = TextEditingController();
+  final TextEditingController endDateController = TextEditingController();
+  DateTime? startDate;
+
+  DateTime? endDate;
 
   @override
   void initState() {
@@ -40,6 +48,8 @@ class _KanbanAddUpdateViewState extends State<KanbanAddUpdateView> {
     if ((widget.data.itemId ?? '').isNotEmpty) {
       titleController.text = widget.data.title ?? '';
       descriptionController.text = widget.data.description ?? '';
+      startDate = widget.data.startDate;
+      endDate = widget.data.endDate;
       setState(() {});
     }
   }
@@ -60,6 +70,7 @@ class _KanbanAddUpdateViewState extends State<KanbanAddUpdateView> {
             ),
             Expanded(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AppTextField(
                     controller: titleController,
@@ -76,6 +87,7 @@ class _KanbanAddUpdateViewState extends State<KanbanAddUpdateView> {
                   const SizedBox(height: 12),
                   AppTextField(
                     controller: descriptionController,
+                    maxLines: 4,
                     hintText: translation(context).description,
                     onChange: (value) {
                       enable();
@@ -84,6 +96,59 @@ class _KanbanAddUpdateViewState extends State<KanbanAddUpdateView> {
                       return value.toString().validDescription(context: context, ignoreEmpty: true);
                     },
                   ),
+                  const SizedBox(height: 12),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextWidgets(text: translation(context).startDate, style: const TextStyle(fontSize: 12))
+                                .onPressedWithoutHaptic(() async {
+                              await appState.selectDate(context).then((value) {
+                                startDate = value;
+                                setState(() {});
+                              });
+                            }),
+                            TextWidgets(
+                                    text: startDate != null
+                                        ? appState.formatDateTime(dateTime: startDate.toString())
+                                        : '-',
+                                    style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600))
+                                .onPressedWithoutHaptic(() async {
+                              await appState.selectDate(context).then((value) {
+                                startDate = value;
+                                setState(() {});
+                              });
+                            }),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextWidgets(text: translation(context).endDate, style: const TextStyle(fontSize: 12))
+                                .onPressedWithoutHaptic(() async {
+                              await appState.selectDate(context).then((value) {
+                                endDate = value;
+                                setState(() {});
+                              });
+                            }),
+                            TextWidgets(
+                                    text: endDate != null ? appState.formatDateTime(dateTime: endDate.toString()) : '-',
+                                    style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600))
+                                .onPressedWithoutHaptic(() async {
+                              await appState.selectDate(context).then((value) {
+                                endDate = value;
+                                setState(() {});
+                              });
+                            }),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -91,7 +156,6 @@ class _KanbanAddUpdateViewState extends State<KanbanAddUpdateView> {
               isValidNext: enable(),
               cancelBtnName: translation(context).cancel,
               nxtBtnName: widget.isAdd ? translation(context).add : translation(context).update,
-              // nxtBtnName: translation(context).,
               nextTap: () {
                 if (enable()) {
                   widget.onTapCallBack.call(
@@ -100,6 +164,10 @@ class _KanbanAddUpdateViewState extends State<KanbanAddUpdateView> {
                       itemId: widget.data.itemId ?? '',
                       title: titleController.text,
                       description: descriptionController.text,
+                      createdDate: widget.isAdd ? DateTime.now() : widget.data.createdDate,
+                      updatedDate: !widget.isAdd ? DateTime.now() : widget.data.updatedDate,
+                      startDate: startDate,
+                      endDate: endDate,
                     ),
                   );
                   context.pop();

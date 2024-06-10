@@ -11,6 +11,8 @@
   "updateTask": "कार्य अपडेट करें",
   "title": "शीर्षक",
   "description": "विवरण",
+  "startDate": "आरंभ करने की तिथि",
+  "endDate": "अंतिम तिथि",
   "requestTimedOut": "अनुरोध का समय समाप्त",
   "serverError": "सर्वर त्रुटि",
   "connectTimedOut": "कनेक्ट का समय समाप्त",

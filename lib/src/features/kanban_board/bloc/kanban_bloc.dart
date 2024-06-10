@@ -37,13 +37,24 @@ class KanbanBloc extends Bloc<KanbanEvent, KanbanState> {
     final group1 = AppFlowyGroupData(
       id: KanbanType.backlog.name,
       name: 'Backlog',
-      items: [],
+      items: [
+        KanbanCardItemDataModel(
+            itemId: const Uuid().v4(),
+            title: 'Test 1',
+            description: 'Description test 1',
+            startDate: DateTime.now(),
+            endDate: DateTime.now().add(const Duration(days: 5))),
+        KanbanCardItemDataModel(itemId: const Uuid().v4(), title: 'Test 2', description: ''),
+        KanbanCardItemDataModel(itemId: const Uuid().v4(), title: 'Test 3', description: 'Description test 3'),
+      ],
     );
 
     final group2 = AppFlowyGroupData(
       id: KanbanType.inProgress.name,
       name: 'In Progress',
-      items: [],
+      items: [
+        KanbanCardItemDataModel(itemId: const Uuid().v4(), title: 'Test', description: 'Description test'),
+      ],
     );
 
     final group3 = AppFlowyGroupData(id: KanbanType.done.name, name: 'Done', items: []);
@@ -60,8 +71,12 @@ class KanbanBloc extends Bloc<KanbanEvent, KanbanState> {
         event.groupId,
         KanbanCardItemDataModel(
           itemId: const Uuid().v4(),
-          title: event.title,
-          description: event.description,
+          title: event.data.title ?? '',
+          description: event.data.description ?? '',
+          startDate: event.data.startDate,
+          endDate: event.data.endDate,
+          createdDate: event.data.createdDate,
+          updatedDate: event.data.updatedDate,
         ),
       );
       emit(KanbanLoaded(controller: controller, config: config));
@@ -74,8 +89,12 @@ class KanbanBloc extends Bloc<KanbanEvent, KanbanState> {
         event.groupId,
         KanbanCardItemDataModel(
           itemId: event.itemId,
-          title: event.title,
-          description: event.description,
+          title: event.data.title ?? '',
+          description: event.data.description ?? '',
+          startDate: event.data.startDate,
+          endDate: event.data.endDate,
+          createdDate: event.data.createdDate,
+          updatedDate: event.data.updatedDate,
         ),
       );
       emit(KanbanLoaded(controller: controller, config: config));

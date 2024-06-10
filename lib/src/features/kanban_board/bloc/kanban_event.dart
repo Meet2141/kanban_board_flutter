@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:kanban_flutter/src/features/kanban_board/model/kanban_model.dart';
 
 abstract class KanbanEvent extends Equatable {
   @override
@@ -9,34 +10,30 @@ class KanbanInitialLoadEvent extends KanbanEvent {}
 
 class KanbanAddTask extends KanbanEvent {
   final String groupId;
-  final String title;
-  final String description;
+  final KanbanDataModel data;
 
   KanbanAddTask({
     required this.groupId,
-    required this.title,
-    required this.description,
+    required this.data,
   });
 
   @override
-  List<Object> get props => [groupId];
+  List<Object> get props => [groupId, data];
 }
 
 class KanbanUpdateTask extends KanbanEvent {
   final String groupId;
   final String itemId;
-  final String title;
-  final String description;
+  final KanbanDataModel data;
 
   KanbanUpdateTask({
     required this.groupId,
     required this.itemId,
-    required this.title,
-    required this.description,
+    required this.data,
   });
 
   @override
-  List<Object> get props => [groupId, itemId, title, description];
+  List<Object> get props => [groupId, itemId, data];
 }
 
 class KanbanDeleteTask extends KanbanEvent {

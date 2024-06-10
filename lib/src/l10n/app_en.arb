@@ -11,6 +11,8 @@
   "updateTask": "Update Task",
   "title": "Title",
   "description": "Description",
+  "startDate": "Start Date",
+  "endDate": "End Date",
   "requestTimedOut": "Request timed out",
   "serverError": "Server error",
   "connectTimedOut": "Connect timed out",

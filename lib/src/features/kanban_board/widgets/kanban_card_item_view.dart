@@ -2,6 +2,7 @@ import 'package:appflowy_board/appflowy_board.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kanban_flutter/src/core/constants/color_constants.dart';
+import 'package:kanban_flutter/src/core/constants/string_constants.dart';
 import 'package:kanban_flutter/src/core/extensions/gesture_extensions.dart';
 import 'package:kanban_flutter/src/core/utils/bottomsheet_utils.dart';
 import 'package:kanban_flutter/src/features/kanban_board/bloc/kanban_bloc.dart';
@@ -56,7 +57,24 @@ class KanbanCardItemView extends StatelessWidget {
                           item.description,
                           style: const TextStyle(fontSize: 12, color: Colors.grey),
                         ),
-                      )
+                      ),
+                    if (item.startDate != null)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: Row(
+                          children: [
+                            Text(
+                              appState.formatDateTime(dateTime: item.startDate.toString()),
+                              style: const TextStyle(fontSize: 12, color: Colors.grey),
+                            ),
+                            if (item.endDate != null)
+                              Text(
+                                '- ${appState.formatDateTime(dateTime: item.endDate.toString())}',
+                                style: const TextStyle(fontSize: 12, color: Colors.grey),
+                              )
+                          ],
+                        ),
+                      ),
                   ],
                 ),
               ),
@@ -84,18 +102,18 @@ class KanbanCardItemView extends StatelessWidget {
                 child: KanbanAddUpdateView(
                   isAdd: false,
                   data: KanbanDataModel(
-                    groupId: groupId,
-                    itemId: item.itemId,
-                    title: item.title,
-                    description: item.description,
-                  ),
+                      groupId: groupId,
+                      itemId: item.itemId,
+                      title: item.title,
+                      description: item.description,
+                      startDate: item.startDate,
+                      endDate: item.endDate),
                   onTapCallBack: (value) {
                     context.read<KanbanBloc>().add(
                           KanbanUpdateTask(
                             groupId: groupId,
                             itemId: item.itemId,
-                            title: value.title ?? '',
-                            description: value.description ?? '',
+                            data: value,
                           ),
                         );
                   },
@@ -113,8 +131,20 @@ class KanbanCardItemDataModel extends AppFlowyGroupItem {
   final String itemId;
   final String title;
   final String description;
+  final DateTime? startDate;
+  final DateTime? endDate;
+  final DateTime? createdDate;
+  final DateTime? updatedDate;
 
-  KanbanCardItemDataModel({required this.itemId, required this.title, required this.description});
+  KanbanCardItemDataModel({
+    required this.itemId,
+    required this.title,
+    required this.description,
+    this.startDate,
+    this.endDate,
+    this.createdDate,
+    this.updatedDate,
+  });
 
   @override
   String get id => itemId;

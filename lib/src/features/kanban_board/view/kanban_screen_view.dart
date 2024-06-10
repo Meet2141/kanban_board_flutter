@@ -58,72 +58,74 @@ class _KanbanScreenViewState extends State<KanbanScreenView> {
                     ),
                   );
                 },
-                headerBuilder: (context, columnData) {
+                headerBuilder: (context, group) {
                   return AppFlowyGroupHeader(
-                    title: Text(columnData.headerData.groupName),
-                    addIcon: const Icon(Icons.add, size: 20),
+                    title: Text(group.headerData.groupName),
+                    addIcon: group.id == KanbanType.done.name ? null : const Icon(Icons.add, size: 20),
                     onAddButtonClick: () {
-                      BottomSheetUtils.bottomSheet(
-                          context: context,
-                          widgetBuilder: (context) {
-                            return BlocProvider(
-                              create: (context) => KanbanBloc(),
-                              child: KanbanAddUpdateView(
-                                isAdd: true,
-                                data: KanbanDataModel(groupId: columnData.id),
-                                onTapCallBack: (value) {
-                                  context.read<KanbanBloc>().add(
-                                        KanbanAddTask(
-                                          groupId: columnData.id,
-                                          title: value.title ?? '',
-                                          description: value.description ?? '',
-                                        ),
-                                      );
-                                },
-                              ),
-                            );
-                          }).then((value) {
-                        boardController.scrollToBottom(columnData.id);
-                      });
+                      if (!(group.id == KanbanType.done.name)) {
+                        BottomSheetUtils.bottomSheet(
+                            context: context,
+                            widgetBuilder: (context) {
+                              return BlocProvider(
+                                create: (context) => KanbanBloc(),
+                                child: KanbanAddUpdateView(
+                                  isAdd: true,
+                                  data: KanbanDataModel(groupId: group.id),
+                                  onTapCallBack: (value) {
+                                    context.read<KanbanBloc>().add(
+                                          KanbanAddTask(
+                                            groupId: group.id,
+                                            data: value,
+                                          ),
+                                        );
+                                  },
+                                ),
+                              );
+                            }).then((value) {
+                          boardController.scrollToBottom(group.id);
+                        });
+                      }
                     },
                     height: 50,
                     margin: state.config.groupBodyPadding,
                   );
                 },
                 footerBuilder: (context, group) {
-                  return AppFlowyGroupFooter(
-                    icon: const Icon(Icons.add, size: 20),
-                    title: TextWidgets(
-                      text: translation(context).addTask,
-                      style: const TextStyle(),
-                    ),
-                    height: 50,
-                    margin: state.config.groupBodyPadding,
-                    onAddButtonClick: () {
-                      BottomSheetUtils.bottomSheet(
-                          context: context,
-                          widgetBuilder: (ctx) {
-                            return BlocProvider(
-                              create: (context) => KanbanBloc(),
-                              child: KanbanAddUpdateView(
-                                isAdd: true,
-                                data: KanbanDataModel(groupId: group.id),
-                                onTapCallBack: (value) {
-                                  context.read<KanbanBloc>().add(
-                                        KanbanAddTask(
-                                          groupId: group.id,
-                                          title: value.title ?? '',
-                                          description: value.description ?? '',
-                                        ),
-                                      );
-                                },
-                              ),
-                            );
-                          }).then((value) {
-                        boardController.scrollToBottom(group.id);
-                      });
-                    },
-                  );
+                  return group.id == KanbanType.done.name
+                      ? const AppFlowyGroupFooter()
+                      : AppFlowyGroupFooter(
+                          icon: const Icon(Icons.add, size: 20),
+                          title: TextWidgets(
+                            text: translation(context).addTask,
+                            style: const TextStyle(),
+                          ),
+                          height: 50,
+                          margin: state.config.groupBodyPadding,
+                          onAddButtonClick: () {
+                            BottomSheetUtils.bottomSheet(
+                                context: context,
+                                widgetBuilder: (ctx) {
+                                  return BlocProvider(
+                                    create: (context) => KanbanBloc(),
+                                    child: KanbanAddUpdateView(
+                                      isAdd: true,
+                                      data: KanbanDataModel(groupId: group.id),
+                                      onTapCallBack: (value) {
+                                        context.read<KanbanBloc>().add(
+                                              KanbanAddTask(
+                                                groupId: group.id,
+                                                data: value,
+                                              ),
+                                            );
+                                      },
+                                    ),
+                                  );
+                                }).then((value) {
+                              boardController.scrollToBottom(group.id);
+                            });
+                          },
+                        );
                 },
               ),
             ],
