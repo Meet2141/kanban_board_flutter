@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kanban_flutter/src/core/constants/color_constants.dart';
 import 'package:kanban_flutter/src/core/constants/string_constants.dart';
 import 'package:kanban_flutter/src/core/extensions/gesture_extensions.dart';
+import 'package:kanban_flutter/src/core/utils/app_utils.dart';
 import 'package:kanban_flutter/src/core/utils/bottomsheet_utils.dart';
+import 'package:kanban_flutter/src/core/utils/progress_loader_utils.dart';
 import 'package:kanban_flutter/src/features/kanban_board/bloc/kanban_bloc.dart';
 import 'package:kanban_flutter/src/features/kanban_board/bloc/kanban_event.dart';
 import 'package:kanban_flutter/src/features/kanban_board/model/kanban_model.dart';
@@ -52,25 +54,33 @@ class KanbanCardItemView extends StatelessWidget {
                     ),
                     if (item.description.isNotEmpty)
                       Padding(
-                        padding: const EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.only(top: 2),
                         child: Text(
                           item.description,
-                          style: const TextStyle(fontSize: 12, color: Colors.grey),
+                          style: const TextStyle(fontSize: 12, color: ColorConstants.border),
                         ),
                       ),
                     if (item.startDate != null)
                       Padding(
-                        padding: const EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.only(top: 3),
                         child: Row(
                           children: [
                             Text(
                               appState.formatDateTime(dateTime: item.startDate.toString()),
-                              style: const TextStyle(fontSize: 12, color: Colors.grey),
+                              style: const TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: ColorConstants.border,
+                              ),
                             ),
                             if (item.endDate != null)
                               Text(
                                 '- ${appState.formatDateTime(dateTime: item.endDate.toString())}',
-                                style: const TextStyle(fontSize: 12, color: Colors.grey),
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                  color: ColorConstants.border,
+                                ),
                               )
                           ],
                         ),
@@ -78,18 +88,25 @@ class KanbanCardItemView extends StatelessWidget {
                   ],
                 ),
               ),
-              const Icon(
-                Icons.delete_outline,
-                color: ColorConstants.red,
-                size: 20,
-              ).onPressedWithHaptic(() {
-                context.read<KanbanBloc>().add(
-                      KanbanDeleteTask(
-                        groupId: groupId,
-                        itemId: item.itemId,
-                      ),
-                    );
-              })
+              if (groupId != KanbanType.done.name)
+                const Icon(
+                  Icons.delete_outline,
+                  color: ColorConstants.red,
+                  size: 20,
+                ).onPressedWithHaptic(() {
+                  LoaderUtils.showProgressDialog(context);
+                  AppUtils.futureDelay(
+                      seconds: 1,
+                      afterDelay: () {
+                        context.read<KanbanBloc>().add(
+                              KanbanDeleteTask(
+                                groupId: groupId,
+                                itemId: item.itemId,
+                              ),
+                            );
+                        LoaderUtils.dismissProgressDialog(context);
+                      });
+                })
             ],
           ),
         ),

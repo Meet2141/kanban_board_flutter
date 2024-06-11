@@ -34,8 +34,7 @@ class _KanbanScreenViewState extends State<KanbanScreenView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<KanbanBloc, KanbanState>(
-      listener: (context, state) {},
+    return BlocBuilder<KanbanBloc, KanbanState>(
       builder: (context, state) {
         if (state is KanbanLoaded) {
           return Column(
@@ -47,7 +46,10 @@ class _KanbanScreenViewState extends State<KanbanScreenView> {
                 config: state.config,
                 controller: state.controller,
                 boardScrollController: boardController,
-                groupConstraints: const BoxConstraints.tightFor(width: 240),
+                groupConstraints: BoxConstraints.tightFor(
+                  width: 240,
+                  height: MediaQuery.sizeOf(context).height / 1.3,
+                ),
                 cardBuilder: (context, group, groupItem) {
                   return AppFlowyGroupCard(
                     key: ValueKey(groupItem.id),

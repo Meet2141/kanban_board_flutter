@@ -57,7 +57,14 @@ class KanbanBloc extends Bloc<KanbanEvent, KanbanState> {
       ],
     );
 
-    final group3 = AppFlowyGroupData(id: KanbanType.done.name, name: 'Done', items: []);
+    final group3 = AppFlowyGroupData(id: KanbanType.done.name, name: 'Done', items: [
+      KanbanCardItemDataModel(
+          itemId: const Uuid().v4(),
+          title: 'Test completed',
+          description: 'Description',
+          startDate: DateTime.now(),
+          endDate: DateTime.now().add(const Duration(days: 100))),
+    ]);
 
     controller.addGroup(group1);
     controller.addGroup(group2);

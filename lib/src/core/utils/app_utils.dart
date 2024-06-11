@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AppUtils {
-  static Future futureDelay({int? seconds, required VoidCallback afterDelay}) async {
-    await Future.delayed(Duration(seconds: seconds ?? 2)).then((value) {
+  static Future futureDelay({Duration? duration, int? seconds, required VoidCallback afterDelay}) async {
+    await Future.delayed(duration ?? Duration(seconds: seconds ?? 2)).then((value) {
       afterDelay();
     });
   }
